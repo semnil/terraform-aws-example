@@ -17,14 +17,15 @@ Webアプリケーション開発を想定したAWSリソースのTerraform習�
 terraform/                        # IaC
 ├── environments                  # 環境別
 │   └── dev                       # development
-│       └── modules               # dev専用module
+│       └── modules               # dev用module
 │   └── stg                       # staging
-│       └── modules               # stg専用module
+│       └── modules               # stg用module
 │   └── prd                       # production
-│       └── modules               # prd専用module
+│       └── modules               # prd用module
 ├── global                        # AWSアカウント共通リソース
-│   └── modules                   # 共通リソース専用module
+│   └── modules                   # 共通リソース用module
 └── modules                       # 汎用module
+    └── service                   # service用module
 ```
 
 ## 動かすのに必要なもの

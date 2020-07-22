@@ -1,5 +1,5 @@
 variable "prefix" {
-  default = "terraform-aws-setup"
+  default = "terraform-aws-example"
 }
 
 variable "environment" {

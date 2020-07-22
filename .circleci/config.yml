@@ -94,62 +94,62 @@ workflows:
           context: rs-works/terraform
           requires:
             - check
-      - approval:
-          name: approval_global
-          type: approval
-          requires:
-            - plan_global
-          filters:
-            branches:
-              only:
-                - master
-      - deploy:
-          name: deploy_global
-          current: terraform/global
-          context: rs-works/terraform
-          requires:
-            - plan_global
-            - approval_global
-          filters:
-            branches:
-              only:
-                - master
+      # - approval:
+      #     name: approval_global
+      #     type: approval
+      #     requires:
+      #       - plan_global
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
+      # - deploy:
+      #     name: deploy_global
+      #     current: terraform/global
+      #     context: rs-works/terraform
+      #     requires:
+      #       - plan_global
+      #       - approval_global
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
       - plan:
           name: plan_dev
           current: terraform/environments/dev
           context: rs-works/terraform
           requires:
             - check
-      - approval:
-          name: approval_dev
-          type: approval
-          requires:
-            - plan_dev
-          filters:
-            branches:
-              only:
-                - master
-      - deploy:
-          name: deploy_dev
-          current: terraform/environments/dev
-          context: rs-works/terraform
-          requires:
-            - deploy_global
-            - plan_dev
-            - approval_dev
-          filters:
-            branches:
-              only:
-                - master
-      - slack/approval-notification:
-          message: "Pending approval"
-          mentions: "here"
-          color: "#F5E911"
-          context: rs-works/terraform
-          requires:
-            - plan_global
-            - plan_dev
-          filters:
-            branches:
-              only:
-                - master
+      # - approval:
+      #     name: approval_dev
+      #     type: approval
+      #     requires:
+      #       - plan_dev
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
+      # - deploy:
+      #     name: deploy_dev
+      #     current: terraform/environments/dev
+      #     context: rs-works/terraform
+      #     requires:
+      #       - deploy_global
+      #       - plan_dev
+      #       - approval_dev
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
+      # - slack/approval-notification:
+      #     message: "Pending approval"
+      #     mentions: "here"
+      #     color: "#F5E911"
+      #     context: rs-works/terraform
+      #     requires:
+      #       - plan_global
+      #       - plan_dev
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
